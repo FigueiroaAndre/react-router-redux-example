@@ -1,11 +1,14 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { createItem } from '../../store/reducers/itemsReducer';
 
 export default function CreateItem() {
+    const dispatch = useDispatch();
 
     function handleSubmit(values, { setSubmitting }) {
-        alert(JSON.stringify(values));
+        dispatch(createItem(values.name, values.description, values.cost))
         setSubmitting(false);
     }
 
@@ -23,6 +26,7 @@ export default function CreateItem() {
                         .max(300, 'Must be 300 characters or less.'),
                     cost: Yup.number()
                         .min(0, 'Must be non negative.')
+                        .required('Required.'),
                 })}
                 onSubmit={handleSubmit}
             >

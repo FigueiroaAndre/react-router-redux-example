@@ -21,19 +21,30 @@ const INITIAL_STATE = {
     ]
 }
 
-export const itemsActions = {
+const itemsActions = {
     ADD_ITEM: 'items/add_item',
+}
+
+export function createItem(name, description, cost) {
+    return {
+        type: itemsActions.ADD_ITEM,
+        payload: {
+            name,
+            description,
+            cost
+        }
+    }
 }
 
 export default function itemsReducer(state = INITIAL_STATE, action) {
     if (action.type === itemsActions.ADD_ITEM) {
         const newItem = {
-            id: state.items.length + 1,
+            id: state.itemList.length + 1,
             name: action.payload.name,
             description: action.payload.description,
             cost: action.payload.cost
         }
-        return { ...state, itemList: [...state.items, newItem]}
+        return { ...state, itemList: [...state.itemList, newItem]}
     }
     return state;
 }
