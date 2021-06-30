@@ -29,7 +29,7 @@ export default function Routes() {
                 <Route path={ROUTES.ITEMS} component={Items}/>
                 <Route path={ROUTES.CREATE_ITEM} component={CreateItem}/>
                 <Route path={ROUTES.CART} component={Cart}/>
-                <Route path={ROUTES.ITEM_DETAILS} component={ItemDetails}/>
+                <Route path={`${ROUTES.ITEM_DETAILS}/:id`} component={ItemDetails}/>
             </Switch>
         </Router>
     );
