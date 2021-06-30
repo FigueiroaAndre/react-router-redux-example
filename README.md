@@ -8,7 +8,7 @@ Simple example to practice with **react-router** and **react-redux** and its bes
 ```sh
 $ git clone https://github.com/FigueiroaAndre/
 $ react-router-redux-example.git
-$ code react-router-redux-example
+$ cd react-router-redux-example
 $ npm install
 $ npm run start
 ```
