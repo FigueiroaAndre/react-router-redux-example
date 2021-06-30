@@ -7,8 +7,9 @@ import { createItem } from '../../store/reducers/itemsReducer';
 export default function CreateItem() {
     const dispatch = useDispatch();
 
-    function handleSubmit(values, { setSubmitting }) {
+    function handleSubmit(values, { setSubmitting, resetForm }) {
         dispatch(createItem(values.name, values.description, values.cost))
+        resetForm()
         setSubmitting(false);
     }
 
@@ -40,15 +41,15 @@ export default function CreateItem() {
                     <label style={{display:'block', fontWeight: 'bold'}} htmlFor="description">Description</label>
                     <Field style={{width: '500px', height: '150px'}} name="description" as="textarea" placeholder="Description" />
                     <ErrorMessage name="description">{msg => <span style={{color: 'red', marginLeft: '20px'}}>{msg}</span>}</ErrorMessage>
-                    
+
                     <hr/>
                     <label style={{display:'block', fontWeight: 'bold'}} htmlFor="cost">Cost</label>
                     <Field name="cost" type="number" step="0.01" placeholder="Cost $" />
                     <ErrorMessage name="cost">{msg => <span style={{color: 'red', marginLeft: '20px'}}>{msg}</span>}</ErrorMessage>
-                    
+
                     <hr/>
                     <button type="submit">Submit</button>
-                </Form>
+                </Form>            
             </Formik>
         </React.Fragment>
     );
