@@ -15,6 +15,7 @@ export default function CreateItem() {
     return (
         <React.Fragment>
             <h1>Create Item</h1>
+            <hr/>
             <Formik
                 initialValues={{name: "", description: "", cost: 0 }}
                 validationSchema={Yup.object({
@@ -31,7 +32,6 @@ export default function CreateItem() {
                 onSubmit={handleSubmit}
             >
                 <Form>
-                    <hr/>
                     <label style={{display:'block', fontWeight: 'bold'}} htmlFor="name">Name</label>
                     <Field name="name" type="text" placeholder="Item name" />
                     <ErrorMessage name="name">{msg => <span style={{color: 'red', marginLeft: '20px'}}>{msg}</span>}</ErrorMessage>
